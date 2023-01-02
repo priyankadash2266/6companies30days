@@ -1,0 +1,25 @@
+Q1.You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
+SOLN:
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        stack<int> stack;
+        for (auto t : tokens) {
+            if (o.find(t) == o.end()) 
+            stack.push(stoi(t));
+            else {
+                int j = stack.top(); stack.pop();
+                int i = stack.top(); stack.pop();
+                if (t == "+") 
+                stack.push(i + j);
+                else if (t == "-") 
+                stack.push(i - j);
+                else if (t == "*") 
+                stack.push(i * j);
+                else 
+                stack.push(i / j);
+            }
+        }
+        return stack.top();
+    }
+};
